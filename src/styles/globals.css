@@ -1,0 +1,51 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: Roboto, sans-serif;
+  overflow: hidden;
+  font-size: 18px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  height: 100%;
+}
+
+.chakra-portal {
+  display: none;
+}
+
+.formularios {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  gap: 50px;
+  color: black;
+}
+
+.form-label {
+  max-height: 80px;
+  width: 100%;
+}
+
+#main-content {
+  max-width: calc(100vw - 19rem);
+}
+
+.formik-input {
+  height: 60px;
+  width: 100%;
+  border-radius: 0.5rem;
+  padding: 10px 15px;
+}
