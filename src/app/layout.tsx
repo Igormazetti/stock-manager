@@ -1,7 +1,14 @@
 'use client';
 import React from 'react';
-
+import { Roboto } from 'next/font/google';
 import { Box, ChakraProvider } from '@chakra-ui/react';
+
+const roboto = Roboto({
+  weight: ['400', '500', '700'],
+  style: ['normal', 'italic'],
+  subsets: ['latin'],
+  display: 'swap',
+});
 
 export default function RootLayout({
   children,
@@ -10,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html>
-      <body suppressHydrationWarning>
+      <body suppressHydrationWarning className={roboto.className}>
         <ChakraProvider>
           <Box as="main" minH="100vh">
             {children}
