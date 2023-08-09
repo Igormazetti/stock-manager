@@ -12,6 +12,10 @@ import {
   Text,
 } from '@chakra-ui/react';
 
+import axios from 'axios';
+import Cookies from 'js-cookie';
+import { useRouter } from 'next/navigation';
+
 export default function Login() {
   const {
     handleSubmit,
@@ -19,9 +23,23 @@ export default function Login() {
     formState: { errors, isSubmitting },
   } = useForm();
 
-  console.log(errors);
+  const router = useRouter();
+
   function onSubmit(values: FieldValues) {
-    console.log(values);
+    axios
+      .post(`${process.env.NEXT_PUBLIC_API_URL}/company/login`, values)
+      .then((response) => {
+        Cookies.set('auth-token', response.data.token);
+        Cookies.set('company-id', response.data.company.id);
+        localStorage.setItem(
+          'company-name',
+          JSON.stringify(response.data.company.name)
+        );
+
+        console.log(response);
+        // router.push('/dashboard');
+      })
+      .catch((error) => console.log(error));
   }
 
   return (
@@ -63,7 +81,7 @@ export default function Login() {
                 },
               })}
             />
-            <FormErrorMessage>
+            <FormErrorMessage data-testid="email-error">
               {errors.email && (errors.email as FieldError).message}
             </FormErrorMessage>
           </FormControl>
@@ -82,7 +100,7 @@ export default function Login() {
                 },
               })}
             />
-            <FormErrorMessage>
+            <FormErrorMessage data-testid="password-error">
               {errors.password && (errors.password as FieldError).message}
             </FormErrorMessage>
           </FormControl>
