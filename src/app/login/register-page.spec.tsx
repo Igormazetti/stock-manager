@@ -2,26 +2,26 @@ import axios from 'axios';
 import Login from './page';
 import { screen, render, fireEvent, waitFor } from '@testing-library/react';
 import Cookies from 'js-cookie';
-import { useRouter } from './__mocks__/next/router';
+import { AppRouterContextProviderMock } from './useRouterMock';
 
 describe('Login Page', () => {
-  beforeEach(() => {
-    useRouter.mockReturnValue({
-      push: jest.fn(),
-    });
-  });
-
-  afterEach(() => {
-    jest.clearAllMocks();
-  });
+  const push = jest.fn();
 
   it('should render Login page', () => {
-    render(<Login />);
+    render(
+      <AppRouterContextProviderMock router={{ push }}>
+        <Login />
+      </AppRouterContextProviderMock>
+    );
     expect(screen.getByText('Login')).toBeInTheDocument();
   });
 
   it('should render error messages', async () => {
-    render(<Login />);
+    render(
+      <AppRouterContextProviderMock router={{ push }}>
+        <Login />
+      </AppRouterContextProviderMock>
+    );
     const axiosMock = jest.spyOn(axios, 'post');
 
     fireEvent.click(screen.getByText('Entrar'));
@@ -43,7 +43,11 @@ describe('Login Page', () => {
   });
 
   it('should call submit function with fields properly filled', async () => {
-    render(<Login />);
+    render(
+      <AppRouterContextProviderMock router={{ push }}>
+        <Login />
+      </AppRouterContextProviderMock>
+    );
 
     // Mock the axios post request to prevent actual API calls during testing
     const axiosMock = jest.spyOn(axios, 'post');

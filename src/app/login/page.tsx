@@ -14,7 +14,7 @@ import {
 
 import axios from 'axios';
 import Cookies from 'js-cookie';
-// import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 
 export default function Login() {
   const {
@@ -23,7 +23,7 @@ export default function Login() {
     formState: { errors, isSubmitting },
   } = useForm();
 
-  // const router = useRouter();
+  const router = useRouter();
 
   function onSubmit(values: FieldValues) {
     axios
@@ -37,7 +37,7 @@ export default function Login() {
         );
 
         console.log(response);
-        // router.push('/dashboard');
+        router.push('/dashboard');
       })
       .catch((error) => console.log(error));
   }
