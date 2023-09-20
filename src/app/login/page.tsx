@@ -2,7 +2,6 @@
 import React from 'react';
 import { FieldError, FieldValues, useForm } from 'react-hook-form';
 import {
-  Box,
   Button,
   Flex,
   FormControl,
