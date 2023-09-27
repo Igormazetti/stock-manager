@@ -36,7 +36,7 @@ export default function Login() {
         );
 
         console.log(response);
-        router.push('/dashboard');
+        router.push('/products');
       })
       .catch((error) => console.log(error));
   }
