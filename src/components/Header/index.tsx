@@ -7,7 +7,7 @@ export default function Header() {
 
   return (
     <Flex h="120px" bg="#1d1e1f" justifyContent="center" alignItems="center">
-      <Text color="#FFFFFF" fontSize="40px">
+      <Text color="#FFFFFF" fontSize="40px" fontWeight="800">
         {companyName?.replaceAll('"', '')}
       </Text>
     </Flex>
