@@ -18,11 +18,7 @@ export default function RootLayout({
   return (
     <html>
       <body suppressHydrationWarning className={roboto.className}>
-        <ChakraProvider>
-          <Box as="main" minH="100vh">
-            {children}
-          </Box>
-        </ChakraProvider>
+        <ChakraProvider>{children}</ChakraProvider>
       </body>
     </html>
   );

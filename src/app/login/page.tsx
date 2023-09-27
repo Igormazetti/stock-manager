@@ -44,7 +44,7 @@ export default function Login() {
   return (
     <Flex
       h="100vh"
-      minH="100vh"
+      w="100vw"
       bg="#111212"
       color="#FFF"
       direction="column"
@@ -57,7 +57,8 @@ export default function Login() {
       </Text>
       <Flex
         direction="column"
-        w="500px"
+        maxW="500px"
+        w={{ base: '80%', lg: '100%' }}
         h="350px"
         p="30px"
         borderRadius="20px"
@@ -105,7 +106,7 @@ export default function Login() {
           </FormControl>
 
           <Button
-            mt={6}
+            mt={10}
             colorScheme="teal"
             transition="ease-in-out 0.2s"
             _hover={{
